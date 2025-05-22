@@ -3,10 +3,10 @@ const http_server = express();
 const cors = require('cors');
 require('dotenv').config();
 require('./Database/dbconfig')
-// const pool =require('./Database/dbconfig')
 
 
-// http_server.set('pool', pool);
+
+
 http_server.use(express.json());
 http_server.use(express.urlencoded({ extended: false }));
 http_server.use(cors());
