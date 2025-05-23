@@ -57,10 +57,9 @@ if (!employee_code || !first_name || !email || !password) {
     res.status(201).send("User registered successfully");
   } catch (err) {
     console.error("Signup error:", err);
-    res.status(500).send("Internal Server Error");
-  }
+    res.status(500).json({message:"Internal Server Error",error:err.message});
 };
-
+}
 exports.getbyid = async (req, res) => {
   const { id } = req.params;
   try {
@@ -192,6 +191,6 @@ exports.changePassword = async (req, res) => {
     res.status(200).send("Password updated");
   } catch (err) {
     console.error("Change password error:", err);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({message:"Internal Server Error",error:err.message});
   }
 };
