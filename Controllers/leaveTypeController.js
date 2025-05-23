@@ -54,11 +54,10 @@ exports.updateLeaveType = async (req, res) => {
 
 
   try {
-   const [existingUserRows] = await con.query('SELECT * FROM Leave_types WHERE id = ?', [id]);
+   const [existingUserRows] = await con.query('SELECT * FROM leave_types WHERE id = ?', [id]);
     if (existingUserRows.length === 0) {
       return res.status(404).send("User not found");
     }
-
     const existing = existingUserRows[0];
 
     await con.query(
