@@ -98,6 +98,7 @@ exports.updateUser = async (req, res) => {
     email,
     mobile,
     gender,
+    salary,
     department_id,
     birth_date,
     country,
@@ -119,7 +120,7 @@ exports.updateUser = async (req, res) => {
     // Update with fallback values
     await con.query(
       `UPDATE users SET 
-        first_name = ?, last_name = ?, email = ?, mobile = ?, gender = ?, 
+        first_name = ?, last_name = ?, email = ?, mobile = ?, gender = ?,salary =?,
         department_id = ?, birth_date = ?, country = ?, city = ?, 
         address = ?, role = ?, employee_status = ?, updated_at = CURRENT_TIMESTAMP 
       WHERE id = ?`,
@@ -129,6 +130,7 @@ exports.updateUser = async (req, res) => {
         email ?? existing.email,
         mobile ?? existing.mobile,
         gender ?? existing.gender,
+        salary ?? salary.salary,
         department_id ?? existing.department_id,
         birth_date ?? existing.birth_date,
         country ?? existing.country,
