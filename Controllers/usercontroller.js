@@ -10,6 +10,7 @@ exports.signup = async (req, res) => {
     mobile,
     password,
     gender,
+    salary,
     department_id,
     birth_date,
     country,
@@ -34,8 +35,8 @@ if (!employee_code || !first_name || !email || !password) {
     const hashedPassword = await bcrypt.hash(password, 10);
     await con.query(
      `INSERT INTO users 
-        (employee_code, first_name, last_name, email, mobile, password, gender, department_id, birth_date, country, city, address, role, employee_status)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        (employee_code, first_name, last_name, email, mobile, password, gender,salary, department_id, birth_date, country, city, address, role, employee_status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)`,
       [
         employee_code,
         first_name,
@@ -44,6 +45,7 @@ if (!employee_code || !first_name || !email || !password) {
         mobile || null,
         hashedPassword,
         gender || null,
+        salary || null,
         department_id || null,
         birth_date || null,
         country || null,
